@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --crt-bg: #000000;
+            --crt-fg: #ffffff;
+            --crt-glow: rgba(255, 255, 255, 0.1);
+            --crt-dim: rgba(255, 255, 255, 0.08);
+        }
+        body {
+            margin: 0;
+            background: var(--crt-bg);
+            color: var(--crt-fg);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 15px;
+            letter-spacing: 0;
+            text-shadow: none;
+            overflow: hidden;
+        }
+        #terminal {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 8px 10px;
+            box-sizing: border-box;
+            gap: 10px;
+            position: relative;
+            transform: none;
+        }
+        #terminal::before {
+            content: none;
+        }
+        #terminal::after {
+            content: none;
+        }
+        #terminal > * {
+            position: relative;
+            z-index: 1;
+        }
+        #output {
+            flex: 1;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            line-height: 1.4;
+            text-shadow: none;
+            user-select: text;
+        }
+        .line {
+            margin: 0 0 4px 0;
+            text-shadow: none;
+        }
+        .prompt-line {
+            display: block;
+            white-space: pre-wrap;
+            text-shadow: none;
+        }
+        .prompt-prefix {
+            color: var(--crt-fg);
+        }
+        .caret {
+            display: inline-block;
+            width: 9px;
+            height: 16px;
+            margin-left: 2px;
+            background: var(--crt-fg);
+            vertical-align: text-bottom;
+            animation: blink 1s steps(2, end) infinite;
+            box-shadow: none;
+        }
+        #promptInput {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            border: none;
+            padding: 0;
+        }
+        #promptHint {
+            color: rgba(215, 255, 214, 0.6);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+        ::selection {
+            background: #ffffff;
+            color: #000000;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            50.01%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div id="output">
+            <div id="promptHint" hidden></div>
+        </div>
+        <input id="promptInput" type="text" autocomplete="off" />
+    </div>
+    <script src="cmd.js"></script>
+</body>
+</html>

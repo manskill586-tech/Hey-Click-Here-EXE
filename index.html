@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An important assignment from Flavortown</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="vn-root" id="vnRoot">
+        <div class="vn-frame">
+            <main class="stage" id="stage" aria-live="polite">
+                <div class="stage-bg" id="stageBg"></div>
+                <div class="stage-frame"></div>
+                <div class="scene-tag" id="sceneTag">MECHANIC LAB // HUB</div>
+                <div class="stage-flash" id="stageFlash"></div>
+                <div class="stage-noise" id="stageNoise"></div>
+                <div class="characters-layer" id="charactersLayer"></div>
+            </main>
+
+            <section class="dialogue" id="dialoguePanel">
+                <div class="speaker" id="speakerName">SYSTEM</div>
+                <div class="dialogue-row">
+                    <p class="dialogue-text" id="dialogueText"></p>
+                    <div class="timer-chip" id="timerChip" hidden>00.0</div>
+                </div>
+                <div class="dialogue-hint" id="dialogueHint">Enter / click: continue</div>
+                <div class="choices" id="choices"></div>
+                <div class="click-bird" id="clickBird" aria-hidden="true"></div>
+                <div class="auto-indicator dev-only" id="autoIndicator" hidden>
+                    <span class="auto-dot"></span>
+                    <span class="auto-label">AUTO</span>
+                    <span class="auto-time" id="autoIndicatorTime">0.0s</span>
+                </div>
+                <div class="quick-menu" id="quickMenu">
+                    <button class="menu-btn" id="backBtn" type="button">Back</button>
+                    <button class="menu-btn" id="autoBtn" type="button">Auto</button>
+                    <button class="menu-btn" id="skipBtn" type="button">Skip</button>
+                    <button class="menu-btn" id="saveBtn" type="button">Save</button>
+                    <button class="menu-btn" id="loadBtn" type="button">Load</button>
+                    <button class="menu-btn" id="settingsBtn" type="button">Settings</button>
+                </div>
+            </section>
+
+            <div class="screen-text" id="screenTextOverlay" hidden>
+                <div class="screen-text-content" id="screenTextContent"></div>
+            </div>
+
+            <aside class="overlay-panel fullscreen-panel log-panel" id="logPanel" hidden>
+                <div class="overlay-head">
+                    <h2>History Log</h2>
+                    <button class="overlay-close" id="closeLogBtn" type="button">Close</button>
+                </div>
+                <div class="overlay-note">Click an entry to jump back to that scene.</div>
+                <div class="log-list" id="logList"></div>
+            </aside>
+
+            <aside class="overlay-panel fullscreen-panel settings-panel" id="settingsPanel" hidden>
+                <div class="overlay-head">
+                    <h2>Settings</h2>
+                    <button class="overlay-close" id="closeSettingsBtn" type="button">Close</button>
+                </div>
+
+                <div class="settings-tabs">
+                    <button class="tab-btn is-active" type="button" data-tab="text">Text</button>
+                    <button class="tab-btn" type="button" data-tab="audio">Audio</button>
+                    <button class="tab-btn" type="button" data-tab="gameplay">Gameplay</button>
+                    <button class="tab-btn" type="button" data-tab="system">System</button>
+                </div>
+
+                <section class="settings-tab is-active" data-tab="text">
+                    <div class="setting-row">
+                        <label for="textSpeedInput">Text Speed</label>
+                        <input type="range" id="textSpeedInput" min="0" max="70" step="1">
+                        <output id="textSpeedValue">18</output>
+                    </div>
+                    <div class="setting-row">
+                        <label for="textSizeInput">Text Size</label>
+                        <input type="range" id="textSizeInput" min="12" max="40" step="1">
+                        <output id="textSizeValue">20</output>
+                    </div>
+                    <div class="setting-row dev-only">
+                        <label for="textOpacityInput">Text Opacity</label>
+                        <input type="range" id="textOpacityInput" min="10" max="100" step="1">
+                        <output id="textOpacityValue">100</output>
+                    </div>
+                </section>
+
+                <section class="settings-tab" data-tab="audio">
+                    <div class="setting-row">
+                        <label for="musicVolumeInput">Music Volume</label>
+                        <input type="range" id="musicVolumeInput" min="0" max="100" step="1">
+                        <output id="musicVolumeValue">100</output>
+                    </div>
+                    <div class="setting-row">
+                        <label for="voiceVolumeInput">Voice Volume</label>
+                        <input type="range" id="voiceVolumeInput" min="0" max="100" step="1">
+                        <output id="voiceVolumeValue">100</output>
+                    </div>
+                    <div class="setting-row">
+                        <label for="sfxVolumeInput">SFX Volume</label>
+                        <input type="range" id="sfxVolumeInput" min="0" max="100" step="1">
+                        <output id="sfxVolumeValue">100</output>
+                    </div>
+                    <div class="setting-row">
+                        <label for="ambienceVolumeInput">Ambience Volume</label>
+                        <input type="range" id="ambienceVolumeInput" min="0" max="100" step="1">
+                        <output id="ambienceVolumeValue">100</output>
+                    </div>
+                    <div class="setting-row setting-toggle">
+                        <label for="voiceBlipInput">Voice blip effect</label>
+                        <input type="checkbox" id="voiceBlipInput">
+                    </div>
+                    <div class="setting-row setting-toggle">
+                        <label for="ambienceInput">Generated ambience</label>
+                        <input type="checkbox" id="ambienceInput">
+                    </div>
+                </section>
+
+                <section class="settings-tab" data-tab="gameplay">
+                    <div class="setting-row">
+                        <label for="autoDelayInput">Auto Delay (ms)</label>
+                        <input type="range" id="autoDelayInput" min="300" max="6000" step="100">
+                        <output id="autoDelayValue">1800</output>
+                    </div>
+                    <div class="setting-row setting-toggle">
+                        <label for="skipUnreadInput">Skip unread text</label>
+                        <input type="checkbox" id="skipUnreadInput">
+                    </div>
+                    <div class="setting-row setting-toggle">
+                        <label for="timedChoiceInput">Timed choices</label>
+                        <input type="checkbox" id="timedChoiceInput">
+                    </div>
+                </section>
+
+                <section class="settings-tab" data-tab="system">
+                    <div class="setting-row">
+                        <label for="languageSelect">Language</label>
+                        <select id="languageSelect">
+                            <option value="ru">Русский</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="setting-row">
+                        <label for="distortionInput">Distortion Intensity</label>
+                        <input type="range" id="distortionInput" min="0" max="100" step="1">
+                        <output id="distortionValue">35</output>
+                    </div>
+                    <div class="setting-row setting-toggle">
+                        <label for="pressureLayerInput">Pressure layer</label>
+                        <input type="checkbox" id="pressureLayerInput">
+                    </div>
+                    <div class="setting-row setting-toggle">
+                        <label for="glitchTextInput">Glitch text mode</label>
+                        <input type="checkbox" id="glitchTextInput">
+                    </div>
+
+                    <div class="setting-actions-grid">
+                        <button class="menu-btn mini-btn" id="openLogBtn" type="button">Open Log (L)</button>
+                        <button class="menu-btn mini-btn" id="toggleMuteBtn" type="button">Mute (M)</button>
+                        <button class="menu-btn mini-btn" id="toggleUiBtn" type="button">Hide UI (H)</button>
+                        <button class="menu-btn mini-btn" id="openCheckpointsBtn" type="button">Checkpoints</button>
+                        <button class="menu-btn mini-btn dev-only" id="openDevBtn" type="button">Dev Tools (F1)</button>
+                        <button class="menu-btn mini-btn danger-btn" id="restartBtn" type="button">Restart Lab</button>
+                        <button class="menu-btn mini-btn" id="resetSettingsBtn" type="button">Reset Settings</button>
+                    </div>
+
+                    <div class="telemetry-box">
+                        <h3>Telemetry Snapshot</h3>
+                        <pre id="telemetrySummary">No data yet.</pre>
+                    </div>
+                </section>
+            </aside>
+
+            <aside class="overlay-panel fullscreen-panel save-panel" id="savePanel" hidden>
+                <div class="overlay-head">
+                    <h2 id="savePanelTitle">Save</h2>
+                    <button class="overlay-close" id="closeSaveBtn" type="button">Close</button>
+                </div>
+                <div class="save-panel-actions">
+                    <button class="menu-btn mini-btn" id="saveModeBtn" type="button">Save</button>
+                    <button class="menu-btn mini-btn" id="loadModeBtn" type="button">Load</button>
+                </div>
+                <div class="save-list" id="saveList"></div>
+            </aside>
+
+            <aside class="overlay-panel fullscreen-panel desktop-panel" id="desktopPanel" hidden>
+                <div class="overlay-head">
+                    <h2>Desktop</h2>
+                    <div class="overlay-actions">
+                        <button class="menu-btn mini-btn" id="desktopOpenFolderBtn" type="button">Open Folder</button>
+                        <button class="overlay-close" id="desktopCloseBtn" type="button">Close</button>
+                    </div>
+                </div>
+                <div class="overlay-note">Artifacts created by the story appear here.</div>
+                <div class="desktop-grid" id="desktopFiles"></div>
+            </aside>
+
+            <aside class="overlay-panel fullscreen-panel file-viewer-panel" id="fileViewerPanel" hidden>
+                <div class="overlay-head">
+                    <h2 id="fileViewerTitle">File Viewer</h2>
+                    <div class="overlay-actions">
+                        <button class="menu-btn mini-btn" id="fileViewerOpenFolderBtn" type="button">Open Folder</button>
+                        <button class="overlay-close" id="fileViewerCloseBtn" type="button">Close</button>
+                    </div>
+                </div>
+                <div class="file-viewer-meta" id="fileViewerMeta"></div>
+                <pre class="file-viewer-content" id="fileViewerContent"></pre>
+            </aside>
+
+            <aside class="overlay-panel fullscreen-panel input-panel" id="inputPanel" hidden>
+                <div class="overlay-head">
+                    <h2 id="inputPanelTitle">Write</h2>
+                    <button class="overlay-close" id="inputPanelCloseBtn" type="button">Close</button>
+                </div>
+                <p class="input-panel-note" id="inputPanelNote">Type your response.</p>
+                <textarea id="inputPanelField" rows="6" placeholder="Your message"></textarea>
+                <div class="input-panel-preview-label">Output Preview</div>
+                <div class="input-panel-preview" id="inputPanelPreview"></div>
+                <div class="input-panel-actions">
+                    <button class="menu-btn mini-btn" id="inputPanelSubmitBtn" type="button">Submit</button>
+                    <button class="menu-btn mini-btn" id="inputPanelCancelBtn" type="button">Cancel</button>
+                </div>
+            </aside>
+
+            <aside class="overlay-panel fullscreen-panel checkpoints-panel" id="checkpointsPanel" hidden>
+                <div class="overlay-head">
+                    <h2>Checkpoints</h2>
+                    <button class="overlay-close" id="closeCheckpointsBtn" type="button">Close</button>
+                </div>
+                <div class="checkpoint-list" id="checkpointsList"></div>
+            </aside>
+
+            <aside class="overlay-panel fullscreen-panel dev-panel dev-only" id="devPanel" hidden>
+                <div class="overlay-head">
+                    <h2>Dev Tools</h2>
+                    <button class="overlay-close" id="closeDevBtn" type="button">Close</button>
+                </div>
+                <div class="dev-actions">
+                    <div class="row">
+                        <input type="text" id="devJumpInput" placeholder="Jump to ID (e.g. 2.1)">
+                        <button class="menu-btn mini-btn" id="devJumpBtn" type="button">Jump</button>
+                        <button class="menu-btn mini-btn" id="devReloadBtn" type="button">Reload Story</button>
+                    </div>
+                    <div class="row">
+                        <button class="menu-btn mini-btn" id="devValidateBtn" type="button">Validate Story</button>
+                    </div>
+                </div>
+                <div class="dev-save-list" id="devSaveList"></div>
+            </aside>
+
+            <aside class="overlay-panel prompt-panel" id="fakePromptPanel" hidden>
+                <div class="overlay-head">
+                    <h2>System Alert</h2>
+                </div>
+                <p class="prompt-text" id="fakePromptText">Signal anomaly detected.</p>
+                <div class="prompt-actions">
+                    <button class="menu-btn mini-btn" id="fakePromptOkBtn" type="button">Acknowledge</button>
+                </div>
+            </aside>
+
+            <div class="focus-eye" id="focusEyeOverlay" aria-hidden="true" hidden>
+                <video id="focusEyeVideo" src="assets/eye.mp4" muted loop playsinline preload="auto"></video>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="lang-splash" id="langSplash" hidden>
+        <div class="lang-card">
+            <div class="lang-title">Select language / Выберите язык</div>
+            <div class="lang-buttons">
+                <button class="menu-btn" id="langRuBtn" type="button">Русский</button>
+                <button class="menu-btn" id="langEnBtn" type="button">English</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+    <script src="characters.js"></script>
+    <script src="story.js"></script>
+    <script src="player_name.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "flavortown-vn",
+  "version": "0.1.0",
+  "description": "Flavortown visual novel",
+  "author": "Bob",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "editor": "electron . --editor",
+    "web": "node server.js",
+    "cmd": "electron . --cmd-only",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.flavortown.vn",
+    "productName": "Flavortown VN",
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

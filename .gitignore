@@ -1,0 +1,15 @@
+node_modules/
+out/
+.builder-cache/
+_drafts/
+
+*.log
+*.asar
+*.exe
+*.dll
+*.map
+*.zip
+assets.rar
+
+.DS_Store
+Thumbs.db

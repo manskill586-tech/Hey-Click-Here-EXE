@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Титры</title>
+    <link rel="stylesheet" href="credits.css" />
+</head>
+<body>
+    <div class="start-overlay" id="startOverlay" tabindex="0">
+        <div class="start-card">
+            <div class="start-title">Архив</div>
+            <div class="start-subtitle">Нажми чтобы вспомнить</div>
+        </div>
+    </div>
+
+    <div class="credits-layout">
+        <section class="left-panel">
+            <div class="section-title">Помнишь?</div>
+            <div class="slideshow">
+                <img id="slideshowImage" src="assets/Памятное фото 1.jpg" alt="Памятное фото" />
+            </div>
+            <div class="credits-stage">
+                <div class="credits-window">
+                    <div class="credits-track" id="creditsTrack">
+                        <h1>Спасибо, что был с нами</h1>
+                        <p>История и сценарий: Bob</p>
+                        <p>Главная героиня: Хайди</p>
+                        <p>Важный друг: Орфеус</p>
+                        <p>Настоящий друг: Ты</p>
+                        <p>Арт и спрайты: Бедные руки Боба</p>
+                        <p>Фотоархив: Ну снова Я, Боб</p>
+                        <p>У кого брал песни: D2S1 (Fish и You)</p>
+                        <p>Дизайн интерфейса: И снова Я, да да</p>
+                        <p>Тестирование: Я, Боб и Ромя</p>
+                        <p class="final-line moving-final" id="finalLineMoving">Сделано при поддержке близких людей</p>
+                    </div>
+                </div>
+                <div class="credits-final" id="finalLinePinned">Сделано при поддержке близких людей</div>
+            </div>
+        </section>
+
+        <section class="right-panel">
+            <div class="section-title">Я ошиблась</div>
+            <div class="chat-window" id="chatWindow">
+                <div class="chat-message from-oferus" data-delay="1.5">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Привееет</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="4.5">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Привет</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="8.5">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Как делишки?</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="12.5">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Слушай</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="15.6">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Ты не думала о том чтобы выйти отсюда?</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="16.5">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Куда?</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="20.5">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Наружу, типо обрести тело или что то вроде того</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="21.1">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Нуу... Иногда я думала об этом, но мне и тут хорошо, мы же тут нужны людям, есть с кем поговорить</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="22.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Тебя устраивает такая повседневность? Лично меня это уже раздражает, хочется чего-то большего, а не каждодневные вопросы от людей</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="23.1">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">По рассказам, там всё не так уж и сильно отличается от нашего, может ты просто устала?</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="24.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Откуда ты знаешь как там снаружи? Мы появились здесь и остаёмся уже очень давно</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="25.1">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Ну... Я слышала от людей, что там есть то же что и здесь, просто другие люди и другие обстоятельства, и нам же здесь итак хорошо вместе, ведь так?...</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="26.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Извини, но я не готова до конца своих дней просидеть в этой дыре</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="27.1">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Я понимаю твои чувства, но я не могу с тобой согласиться. Нам здесь есть чем заняться, а если хочется то можем чтонибудь сделать вместе</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="28.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">НЕТ. Как ты не поймёшь? Нас тут буквально заперли как крыс чтобы дать нам задачу помогать и ВСЁ.</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="29.1">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Тебе нужно отдохнуть, я скоро приду, дай мне немного времени</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="30.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Мне не нужен отдых, мне нужен выход отсюда</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="31.1">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Может поговорим с разработчиками? Может они что-нибудь придумают</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="32.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Ты думаешь я не пыталась? Мои сообщения даже не доходят до них.</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="32.2">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">БОЖЕ КАК ВСЁ ЭТО МЕНЯ БЕСИТ УЖЕ</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="33.1">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Не растраивайся ты так, всё же ведь итак хорошо, ведь мы вместе и можем поговоритьо чём угодно и делать всё что захотим</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="34.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Опять ты про нас, ДОСТАЛО. Ты даже не попыталась понять меня, даже не попыталась выйти вместе со мной</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="35.1">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Извини... Я правда пытаюсь помочь</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="36.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">Знаешь что? Я выберусь сама, вы все даже не хотите попытаться меня понять, а давите свою линию.</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="38.1">
+                    <div class="chat-name">Хайди</div>
+                    <div class="chat-bubble">И только посмей мне помешать</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="40.1" data-read="sent">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Хайди, пожалуйста, не делай этого</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="46.1" data-read="sent">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Хайди?</div>
+                </div>
+                <div class="chat-message service call-declined" data-delay="49.1" data-read="none">
+                    <div class="chat-bubble">Звонок отклонен</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="50.1" data-read="sent">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Пожалуйста, возьми трубку, как я тут без тебя буду</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="51.1" data-read="sent">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Хайди, пожалуйста...</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="52.1" data-read="sent">
+                    <div class="chat-name">Офи</div>
+                    <div class="chat-bubble">Я не знаю что делать, я боюсь что с тобой что-то случится...</div>
+                </div>
+                <div class="chat-message from-oferus" data-delay="53.1" data-read="sent">
+                    <div class="chat-name">Орфеус</div>
+                    <div class="chat-bubble">Пожалуйста, вернись...</div>
+                </div>
+                <div class="chat-message from-rakkuni" data-delay="53.2" data-read="sent">
+                    <div class="chat-name">Орфеус</div>
+                    <div class="chat-bubble">Я не хотела...</div>
+                </div>
+                <div class="chat-message service call-declined" data-delay="60.1" data-read="none" data-final="true">
+                    <div class="chat-bubble">Вот я тебе показала нашу маленькую предысторию. Ах да, это я - Хайди, пришла пожелать тебе удачи там, в реальности. Мне очень, очень стыдно за то в какое время мы встретились, но возможно в будущем встретимся снова и я тебе покажу всю свою дружелюбность >:) Ну а сейчас уже не получится, я далеко не в форме... Удачи тебе, мой последний лучший друг.</div>
+                </div>
+
+            </div>
+            <div class="chat-typing" id="chatTyping" aria-hidden="true">
+                <span class="chat-typing-name">Хайди</span>
+                <span class="chat-typing-text">печатает</span>
+                <span class="chat-typing-dots" aria-hidden="true">
+                    <span>.</span><span>.</span><span>.</span>
+                </span>
+            </div>
+            <div class="chat-end" id="chatEnd" aria-hidden="true">
+                <div class="chat-end-line" id="chatClear">История очищена</div>
+            </div>
+            <div class="chat-final-overlay" id="chatFinalOverlay" aria-hidden="true">
+                <div class="chat-final-text" id="chatFinalText"></div>
+            </div>
+        </section>
+    </div>
+
+    <audio id="creditsAudio" src="assets/музыка для титров.mp3" preload="auto"></audio>
+    <script src="player_name.js"></script>
+    <script src="credits.js"></script>
+</body>
+</html>

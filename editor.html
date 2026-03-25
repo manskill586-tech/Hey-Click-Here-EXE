@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Конструктор сцен — story.js</title>
+  <link rel="stylesheet" href="editor.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="app-title">Конструктор сцен</div>
+        <div class="app-subtitle">Экспорт в <span>story.js</span></div>
+      </div>
+
+      <div class="sidebar-actions">
+        <input id="sceneSearch" class="input" type="text" placeholder="Поиск по ID/тексту" />
+        <div class="button-row">
+          <button id="addSceneBtn" class="btn primary">+ Новая сцена</button>
+          <button id="duplicateSceneBtn" class="btn">Дублировать</button>
+        </div>
+        <div class="button-row">
+          <button id="moveUpBtn" class="btn">Вверх</button>
+          <button id="moveDownBtn" class="btn">Вниз</button>
+          <button id="deleteSceneBtn" class="btn danger">Удалить</button>
+        </div>
+        <div class="template-block">
+          <div class="template-title">Шаблоны сцен</div>
+          <div class="button-row">
+            <button class="btn ghost template-btn" data-template="dialog">Диалог</button>
+            <button class="btn ghost template-btn" data-template="choice">Выбор</button>
+          </div>
+          <div class="button-row">
+            <button class="btn ghost template-btn" data-template="pause">Пауза</button>
+            <button class="btn ghost template-btn" data-template="horror">Хоррор</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-list-wrap">
+        <ul id="sceneList" class="scene-list"></ul>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="toolbar">
+        <div class="toolbar-left">
+          <button id="undoBtn" class="btn ghost" disabled>Отменить</button>
+          <button id="exportBtn" class="btn primary">Скачать story.js</button>
+          <label class="btn ghost file-label">
+            Импорт story.js
+            <input id="importInput" type="file" accept=".js" />
+          </label>
+          <button id="saveDraftBtn" class="btn ghost">Сохранить черновик</button>
+          <button id="resetDraftBtn" class="btn ghost">Сбросить черновик</button>
+        </div>
+        <div class="toolbar-right">
+          <div class="status" id="statusText">Готово</div>
+        </div>
+      </header>
+
+      <section class="tabs">
+        <button class="tab-btn active" data-tab="scene">Сцена</button>
+        <button class="tab-btn" data-tab="characters">Персонажи</button>
+        <button class="tab-btn" data-tab="choices">Выборы</button>
+        <button class="tab-btn" data-tab="timeline">Таймлайн</button>
+        <button class="tab-btn" data-tab="cmd">CMD</button>
+        <button class="tab-btn" data-tab="audio">Аудио</button>
+        <button class="tab-btn" data-tab="animations">Анимации</button>
+        <button class="tab-btn" data-tab="tags">Теги текста</button>
+      </section>
+
+      <section class="tab-content">
+        <div id="tab-scene" class="tab-pane active"></div>
+        <div id="tab-characters" class="tab-pane"></div>
+        <div id="tab-choices" class="tab-pane"></div>
+        <div id="tab-timeline" class="tab-pane"></div>
+        <div id="tab-cmd" class="tab-pane"></div>
+        <div id="tab-audio" class="tab-pane"></div>
+        <div id="tab-animations" class="tab-pane"></div>
+        <div id="tab-tags" class="tab-pane"></div>
+      </section>
+
+      <section class="bottom">
+        <div class="panel graph-panel">
+          <div class="panel-title">Граф сцен</div>
+          <div class="graph-controls">
+            <button id="graphLayoutBtn" class="btn ghost">Авто-раскладка</button>
+            <button id="graphResetBtn" class="btn ghost">Сброс позиций</button>
+            <button id="graphSaveBtn" class="btn ghost">Сохранить позиции</button>
+            <div class="graph-errors">Ошибок: <span id="graphErrorCount">0</span></div>
+          </div>
+          <div id="graphCanvas" class="graph-canvas">
+            <div id="graphSurface" class="graph-surface">
+              <svg id="graphSvg" class="graph-svg" aria-hidden="true"></svg>
+              <div id="graphNodes" class="graph-nodes"></div>
+            </div>
+            <div id="graphTooltip" class="graph-tooltip" hidden></div>
+          </div>
+        </div>
+        <div class="panel preview-panel">
+          <div class="panel-title">Предпросмотр сцены</div>
+          <div class="preview-controls">
+            <button id="previewRefreshBtn" class="btn primary">Обновить</button>
+            <button id="previewTestBtn" class="btn">Тест с выбранной</button>
+            <input id="previewSceneId" class="input input-small" type="text" placeholder="ID сцены" />
+            <button id="previewOpenBtn" class="btn ghost">Открыть отдельно</button>
+            <button id="previewMuteBtn" class="btn ghost">Звук: Вкл</button>
+          </div>
+          <div class="preview-meta">
+            <span class="muted">Старт ID:</span>
+            <span id="previewActiveId">—</span>
+          </div>
+          <iframe id="previewFrame" class="preview-frame" title="Предпросмотр сцены"></iframe>
+          <details class="code-toggle">
+            <summary>Предпросмотр story.js</summary>
+            <pre class="preview"><code id="storyPreview"></code></pre>
+          </details>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="characters.js"></script>
+  <script src="story.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>

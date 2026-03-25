@@ -1,0 +1,1 @@
+﻿const { app, BrowserWindow, ipcMain, shell, protocol, screen } = require("electron");
