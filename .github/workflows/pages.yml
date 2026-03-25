@@ -1,0 +1,50 @@
+name: Deploy Web (GitHub Pages)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "index.html"
+      - "styles.css"
+      - "game.js"
+      - "story.js"
+      - "characters.js"
+      - "player_name.js"
+      - "credits.html"
+      - "credits.css"
+      - "credits.js"
+      - "assets/**"
+      - "scripts/build-web.js"
+      - "package.json"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build web bundle
+        run: npm run build:web
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4

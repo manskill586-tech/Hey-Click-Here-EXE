@@ -10,6 +10,8 @@
     "dev": "electron .",
     "editor": "electron . --editor",
     "web": "node server.js",
+    "build:web": "node scripts/build-web.js",
+    "preview:web": "npx serve docs",
     "cmd": "electron . --cmd-only",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
